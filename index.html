@@ -12,15 +12,18 @@
     <div class="wrapper"></div>
         <h1>HEKSA</h1>
     <div id="color-display">
-        <input type="text" id="color-input" placeholder="Enter color hex code, eg. #48494B">
+        <input type="text" id="color-input" placeholder="Enter color hex code, eg. 48494B">
     </div>
     <div id="text-display">
-        <p id="text">Enter a color hex code to change the display color, using characters <i>0123456789 ABCDEF</i>.</p>
+        <p id="text">Enter a color hex code without "#" to change the display color, using characters <i>0123456789 ABCDEF</i>.</p>
     <script>
         const colorDisplay = document.getElementById('color-display');
         const colorInput = document.getElementById('color-input');
         colorInput.addEventListener('input', function() {
-  const hexCode = colorInput.value;
+  let hexCode = colorInput.value;
+  if (!hexCode.startsWith('#')) {
+    hexCode = '#' + hexCode;
+  }
   colorDisplay.style.backgroundColor = hexCode;
 });
 
